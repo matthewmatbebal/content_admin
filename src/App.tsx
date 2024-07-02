@@ -16,7 +16,7 @@ const App: React.FC = () => {
         <TonConnectUIProvider manifestUrl="https://<YOUR_APP_URL>/tonconnect-manifest.json">
             <Router basename='/content_admin/'>
                 <Routes>
-                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route path="/content-management" element={<ContentManagementPage />} />
