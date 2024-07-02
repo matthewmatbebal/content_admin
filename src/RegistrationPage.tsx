@@ -9,8 +9,8 @@ const RegistrationPage: React.FC = () => {
     const [error, setError] = useState('');
     const wallet = useTonWallet();
 
-    const checkWalletInDatabase = async (walletAddress: string) => {
-        // Здесь сделать запрос к  серверу  для проверки кошелька в базе данных
+    const checkWalletInDatabase = async () => {
+        // Здесь сделать запрос к серверу для проверки кошелька в базе данных
         // const response = await fetch(`/api/check-wallet?address=${walletAddress}`);
         // const data = await response.json();
         // return data.exists;
@@ -25,13 +25,13 @@ const RegistrationPage: React.FC = () => {
         }
 
         // Проверка подключения кошелька
-        if (!wallet) {
+        if (!wallet || !('address' in wallet)) {
             setError('Please connect your wallet.');
             return;
         }
 
         try {
-            const walletExists = await checkWalletInDatabase(wallet.address);
+            const walletExists = await checkWalletInDatabase();
 
             if (walletExists) {
                 // Кошелек уже существует в базе, переход на Dashboard
